@@ -11,7 +11,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://mukesh-graphics.vercel.app", // ← replace with your actual frontend URL after deploy
+      "https://printvista.vercel.app", // ← replace with your actual frontend URL after deploy
     ],
     methods: ["GET", "POST"],
   })
@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 
 // ── HEALTH CHECK ──
 app.get("/", (req, res) => {
-  res.json({ status: "Mukesh Graphics API is running ✓" });
+  res.json({ status: "Print Vista API is running ✓" });
 });
 
 // ── CONTACT / QUOTE FORM ENDPOINT ──
@@ -44,10 +44,10 @@ app.post("/api/contact", async (req, res) => {
   }
 
   try {
-    // ── Email TO Mukesh Graphics (notification) ──
+    // ── Email TO Print Vista (notification) ──
     await transporter.sendMail({
-      from: `"Mukesh Graphics Website" <${process.env.EMAIL_USER}>`,
-      to: process.env.NOTIFY_EMAIL, // info@mukeshgraphics.com
+      from: `"Print Vista Website" <${process.env.EMAIL_USER}>`,
+      to: process.env.NOTIFY_EMAIL, // info@printvista.com
       subject: `New Quote Request — ${service} | ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 12px; overflow: hidden;">
@@ -57,7 +57,7 @@ app.post("/api/contact", async (req, res) => {
               New Quote Request
             </h1>
             <p style="color: rgba(255,255,255,0.75); margin: 8px 0 0; font-size: 14px;">
-              Received from mukeshgraphics.com
+              Received from printvista.com
             </p>
           </div>
 
@@ -111,7 +111,7 @@ app.post("/api/contact", async (req, res) => {
 
           <div style="background: #fafafa; padding: 20px 40px; text-align: center; border-top: 1px solid #eee;">
             <p style="color: #aaa; font-size: 12px; margin: 0;">
-              © 2026 Mukesh Graphics — mukeshgraphics.com
+              © 2026 Print Vista  — printvista.com
             </p>
           </div>
 
@@ -122,9 +122,9 @@ app.post("/api/contact", async (req, res) => {
     // ── Auto-reply TO the client ──
     if (email) {
       await transporter.sendMail({
-        from: `"Mukesh Graphics" <${process.env.EMAIL_USER}>`,
+        from: `"Print Vista" <${process.env.EMAIL_USER}>`,
         to: email,
-        subject: "We received your enquiry — Mukesh Graphics",
+        subject: "We received your enquiry — Print Vista",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #eee; border-radius: 12px; overflow: hidden;">
             
@@ -140,7 +140,7 @@ app.post("/api/contact", async (req, res) => {
             <div style="padding: 40px;">
               <p style="color: #333; font-size: 16px; line-height: 1.8;">
                 Hi ${name},<br/><br/>
-                Thank you for reaching out to <strong>Mukesh Graphics</strong>. We've received your enquiry for <strong>${service}</strong> and our team will get back to you within <strong>24 hours</strong>.
+                Thank you for reaching out to <strong>Print Vistas</strong>. We've received your enquiry for <strong>${service}</strong> and our team will get back to you within <strong>24 hours</strong>.
               </p>
 
               <div style="background: #f8fafc; border-radius: 12px; padding: 24px 28px; margin: 28px 0;">
@@ -152,15 +152,15 @@ app.post("/api/contact", async (req, res) => {
 
               <p style="color: #555; font-size: 15px; line-height: 1.8;">
                 For urgent requirements, you can also reach us directly:<br/>
-                📞 <a href="tel:+919426272081" style="color: #2563eb;">+91 94262 72081</a> (Mr. Bhupat)<br/>
-                📞 <a href="tel:+919825982727" style="color: #2563eb;">+91 98259 82727</a> (Mr. Yagnik)
+                📞 <a href="tel:+919426272081" style="color: #2563eb;">+91 98765 43210</a> (Abc Patel)<br/>
+                📞 <a href="tel:+919825982727" style="color: #2563eb;">+91 98765 43210</a> (Abc Patel)
               </p>
             </div>
 
             <div style="background: #fafafa; padding: 20px 40px; text-align: center; border-top: 1px solid #eee;">
-              <p style="color: #111; font-weight: 700; margin: 0 0 4px;">MukeshGraphics</p>
+              <p style="color: #111; font-weight: 700; margin: 0 0 4px;">PrintVista</p>
               <p style="color: #aaa; font-size: 12px; margin: 0;">
-                Plot No. 58, Vishwakarma Estate, Chitra GIDC, Bhavnagar, Gujarat 364004
+                Plot No. 58, Vishwakarma Estate, Surat, Gujarat
               </p>
             </div>
 
