@@ -11,7 +11,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://printvista.vercel.app", // ← replace with your actual frontend URL after deploy
+      "https://print-vista.vercel.app", // ← replace with your actual frontend URL after deploy
     ],
     methods: ["GET", "POST"],
   })
